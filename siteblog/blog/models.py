@@ -26,7 +26,10 @@ class Category(models.Model):
         return self.title
 
     class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
         ordering = ['title']
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=50)
@@ -36,13 +39,16 @@ class Tag(models.Model):
         return self.title
 
     class Meta:
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
         ordering = ['title']
 
-class post(models.Model):
+
+class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, verbose_name='URL', unique=True)
     author = models.CharField(max_length=100)
-    content  = models.TextField(blank=True)
+    content = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Опубликовано')
     photo = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
     views = models.IntegerField(default=0, verbose_name='Кол-во просмотров')
@@ -53,4 +59,6 @@ class post(models.Model):
         return self.title
 
     class Meta:
+        verbose_name = 'Пост'
+        verbose_name_plural = 'Посты'
         ordering = ['-created_at']
