@@ -26,7 +26,7 @@ class Category(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Категория'
+        verbose_name = 'Категория(ю)'
         verbose_name_plural = 'Категории'
         ordering = ['title']
 
@@ -45,7 +45,7 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
     slug = models.SlugField(max_length=255, verbose_name='URL', unique=True)
     author = models.CharField(max_length=100)
     content = models.TextField(blank=True)
@@ -59,6 +59,6 @@ class Post(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Пост'
-        verbose_name_plural = 'Посты'
+        verbose_name = 'Статья(ю)'
+        verbose_name_plural = 'Статьи'
         ordering = ['-created_at']
