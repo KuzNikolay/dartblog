@@ -7,7 +7,7 @@ class Home(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 4
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -15,9 +15,9 @@ class Home(ListView):
         return context
 
 class PostByCategory(ListView):
-    template_name = 'blog/index.html'
+    template_name = 'blog/category.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 4
     allow_empty = False
 
     def get_queryset(self):
