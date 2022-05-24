@@ -14,7 +14,6 @@ class PostAdminForm(forms.ModelForm):
         fields = '__all__'
 
 
-
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
@@ -29,14 +28,14 @@ class PostAdmin(admin.ModelAdmin):
     save_as = True  # в админке позволяет добавлять посты на основе предыдущих, кнопка сохранить
     # как новый пост
     save_on_top = True
-    list_display = ('id', 'title', 'slug', 'category', 'created_at', 'views', 'get_photo')  #
+    list_display = ('id', 'title', 'slug', 'category', 'created_at', 'author', 'get_photo', 'views')  #
     # Поля в просмотре статей
     list_display_links = ('id', 'title')
     search_fields = ('title',)
     list_filter = ('category', 'tags',)
     readonly_fields = ('created_at', 'views', 'get_photo')  # Поля в редакторе поста только для
     # просмотра
-    fields = ('title', 'slug', 'category', 'tags', 'content', 'photo', 'get_photo',
+    fields = ('title', 'slug', 'category', 'tags', 'content', 'author', 'photo', 'get_photo',
               'views', 'created_at',)  # Поля в редакторе поста
 
     def get_photo(self, obj):
